@@ -1,6 +1,7 @@
 package com.balbugrahan.chatbot2024.ui.main
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +10,7 @@ import com.balbugrahan.chatbot2024.base.BaseViewModel
 import com.balbugrahan.chatbot2024.data.model.Step
 import com.balbugrahan.chatbot2024.data.repository.StepRepository
 import com.balbugrahan.chatbot2024.data.repository.WebSocketRepository
+import com.balbugrahan.chatbot2024.util.DialogHelper
 import com.balbugrahan.chatbot2024.util.JsonHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -67,15 +69,12 @@ class MainViewModel @Inject constructor(
     }
     //Kullanıcı arayüzünde sockete aksiyon gönderir.
     fun sendAction(action: String) {
-        if (action == "end_conversation") {
-            webSocketRepository.disconnectWebSocket()
-        } else {
-            webSocketRepository.sendAction(action)
-        }
+       webSocketRepository.sendAction(action)
     }
     // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.
     fun onFinishRequested() {
         _finishEvent.postValue(true)
     }
+
 }
 
