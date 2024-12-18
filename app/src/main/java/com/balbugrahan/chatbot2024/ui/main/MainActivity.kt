@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private fun observeViewModel() {
         viewModel.currentStep.observe(this) { step ->
             adapter.addStep(step) // Yeni step ekle
-            scrollToBottom()      // RecyclerView'ı en aşağıya kaydır
+            scrollToBottom()      // RecyclerView'ı en aşağıya kaydır.
         }
     }
 
@@ -50,9 +50,8 @@ class MainActivity : AppCompatActivity() {
     //Hata durumlarını ele alabiliriz.
     //verilen json dosyasında ufak bir düzeltme yapıldı
     //sohbet bitimi vs icin handle action kullanıp websocket disconnet yapılabilir.
-    //icon eklenebilir
     //Read me düzenlenebilir
     //fonttan yazılar yazılabilir
-    //internet bağlantısı yoksa uygulama crash oluyor onu handle edelim
     //freepik icon kullanıldı
+    //örnek bir resim url i olusturuldu
 }

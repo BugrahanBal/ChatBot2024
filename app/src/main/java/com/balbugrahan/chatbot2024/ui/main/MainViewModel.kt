@@ -26,6 +26,10 @@ class MainViewModel @Inject constructor(
     private val _currentStep = MutableLiveData<Step>()
     val currentStep: LiveData<Step> get() = _currentStep
 
+    private val _finishEvent = MutableLiveData<Boolean>()
+    val finishEvent: LiveData<Boolean> = _finishEvent
+
+
     //Socket bağlantısı viewmodel çağrıldığında başlatılır.
     init {
         webSocketRepository.connectWebSocket()
@@ -38,10 +42,6 @@ class MainViewModel @Inject constructor(
         _currentStep.value = steps.firstOrNull { it.step == "step_1" }
     }
 
-    //Kullanıcı arayüzünde sockete aksiyon gönderir.
-    fun sendAction(action: String) {
-        webSocketRepository.sendAction(action)
-    }
 
     //Socketten gelen mesajları observe eder
     private fun observeWebSocketMessages() {
@@ -60,10 +60,22 @@ class MainViewModel @Inject constructor(
         }
     }
     //Room'dan veri alır.
-    fun getSavedStepsFromRoom() {
+    private fun getSavedStepsFromRoom() {
         viewModelScope.launch {
             stepRepository.getSavedSteps() // Room'dan veri al
         }
+    }
+    //Kullanıcı arayüzünde sockete aksiyon gönderir.
+    fun sendAction(action: String) {
+        if (action == "end_conversation") {
+            webSocketRepository.disconnectWebSocket()
+        } else {
+            webSocketRepository.sendAction(action)
+        }
+    }
+    // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.
+    fun onFinishRequested() {
+        _finishEvent.postValue(true)
     }
 }
 

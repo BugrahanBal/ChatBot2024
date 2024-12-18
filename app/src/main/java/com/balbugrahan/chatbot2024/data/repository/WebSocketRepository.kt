@@ -22,7 +22,7 @@ class WebSocketRepository @Inject constructor() {
         val uri = URI("wss://echo.websocket.org")
         webSocketClient = object : WebSocketClient(uri) {
             override fun onOpen(handshakedata: ServerHandshake?) {
-                Log.d("WebSocket", "Connected")
+                Log.d("WebSocket", "Bağlandı")
                 isConnected = true
             }
             override fun onMessage(message: String?) {
@@ -31,12 +31,12 @@ class WebSocketRepository @Inject constructor() {
                 }
             }
             override fun onClose(code: Int, reason: String?, remote: Boolean) {
-                Log.d("WebSocket", "Closed: $reason")
+                Log.d("WebSocket", "Kapatıldı: $reason")
                 isConnected = false
                 handleDisconnected()
             }
             override fun onError(ex: Exception?) {
-                Log.e("WebSocket", "Error: ${ex?.message}")
+                Log.e("WebSocket", "Hata: ${ex?.message}")
                 isConnected = false
                 handleDisconnected()
             }
@@ -47,20 +47,35 @@ class WebSocketRepository @Inject constructor() {
         if (isConnected) {
             webSocketClient.send(action) // Bağlantı varsa aksiyon çalışsın.Yoksa crash olur.
         } else {
-            Log.d("WebSocket", "Not connected, can't send action!")
+            Log.d("WebSocket", "WebSocket bağlantısı yok aksiyon gönderemezsin...")
             handleDisconnected() // Bağlantı yoksa aksiyon alabiliriz.
         }
     }
     private fun handleDisconnected() {
         // Bağlantı kesilince alınacak aksiyonlar
-        Log.d("WebSocket", "WebSocket disconnected. Reconnecting or alerting user...")
-        // Örnek olarak yeniden bağlanmayı deneyebilir veya kullanıcıya bilgi verebiliriz.
+        Log.d("WebSocket", "WebSocket bağlantısı koptu...")
+        // Örnek olarak yeniden bağlanmayı deneyebiliriz veya kullanıcıya bilgi verebiliriz.
         //reconnectWebSocket()
     }
     private fun reconnectWebSocket() {
-        Log.d("WebSocket", "Attempting to reconnect...")
+        Log.d("WebSocket", "Tekrar websockete bağlanmaya çalışıyor...")
         // Yeniden bağlanmayı başlatabiliriz.
         connectWebSocket()
     }
+
+    fun disconnectWebSocket() {
+        if (isConnected) {
+            try {
+                webSocketClient.close()
+                Log.d("WebSocket", "WebSocket kullanıcı tarafından kapatıldı.")
+                isConnected = false
+            } catch (e: Exception) {
+                Log.e("WebSocket", "WebSocket kapatılırken hata oluştu: ${e.message}")
+            }
+        } else {
+            Log.d("WebSocket", "WebSocket zaten kapalı.")
+        }
+    }
+
 }
 

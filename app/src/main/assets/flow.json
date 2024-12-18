@@ -59,7 +59,7 @@
         "step": "step_4",
         "type": "image",
         "content": {
-            "text":  "https://example.com/urun-rehberi.png"
+            "text":  "https://picsum.photos/200/300"
         },
         "action": "show_guide"
     },

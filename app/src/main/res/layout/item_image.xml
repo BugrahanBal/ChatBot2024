@@ -9,7 +9,7 @@
         android:id="@+id/imageDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Görsel İçerik"
+        android:text="Ürün Rehberi"
         android:textSize="16sp"
         android:textColor="#000000"
         android:paddingBottom="8dp" />
