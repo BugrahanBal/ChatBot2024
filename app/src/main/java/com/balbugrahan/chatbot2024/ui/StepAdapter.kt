@@ -76,8 +76,8 @@ class StepAdapter(
                 val button = Button(binding.root.context).apply {
                     text = buttonAction.label
                     setOnClickListener {
-                        clickListener(buttonAction.action)
                         addUserMessage(buttonAction.label)
+                        clickListener(buttonAction.action)
                     }
                 }
                 binding.buttonContainer.addView(button)
