@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
     //sohbet bitimi vs icin handle action kullanıp websocket disconnet yapılabilir.
     //Read me düzenlenebilir
     //fonttan yazılar yazılabilir
+    //internet bağlantısı koptugunda uyarı gelebilir.
 
     //verilen json dosyasında ufak bir düzeltme yapıldı content içeriği sadece text olanların header eksikliği giderildi.
     //verilen json dosyasına örnek bir resim urli eklendi

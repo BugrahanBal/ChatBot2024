@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import com.balbugrahan.chatbot2024.data.model.ButtonAction
+import com.balbugrahan.chatbot2024.data.model.Content
 import com.balbugrahan.chatbot2024.data.model.Step
 import com.balbugrahan.chatbot2024.databinding.ItemButtonBinding
 import com.balbugrahan.chatbot2024.databinding.ItemImageBinding
@@ -17,7 +18,17 @@ class StepAdapter(
 
     private val steps: MutableList<Step> = mutableListOf()
 
-    //Recylerview içine sıra sıra veri eklemek için
+    fun addUserMessage(content: String) {
+        val userStep = Step(
+            step = "user_message",
+            type = "text",
+            content = Content(text = content),
+            action = ""
+        )
+        steps.add(userStep)
+        notifyItemInserted(steps.size - 1)
+    }
+
     fun addStep(newStep: Step) {
         steps.add(newStep)
         notifyItemInserted(steps.size - 1)
@@ -64,7 +75,10 @@ class StepAdapter(
             buttons.forEach { buttonAction ->
                 val button = Button(binding.root.context).apply {
                     text = buttonAction.label
-                    setOnClickListener { clickListener(buttonAction.action) }
+                    setOnClickListener {
+                        clickListener(buttonAction.action)
+                        addUserMessage(buttonAction.label)
+                    }
                 }
                 binding.buttonContainer.addView(button)
             }
