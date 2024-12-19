@@ -48,13 +48,12 @@ class WebSocketRepository @Inject constructor() {
             webSocketClient.send(action) // Bağlantı varsa aksiyon çalışsın.Yoksa crash olur.
         } else {
             Log.d("WebSocket", "WebSocket bağlantısı yok aksiyon gönderemezsin...")
-            handleDisconnected() // Bağlantı yoksa aksiyon alabiliriz.
+            handleDisconnected()
         }
     }
     private fun handleDisconnected() {
         // Bağlantı kesilince alınacak aksiyonlar
         Log.d("WebSocket", "WebSocket bağlantısı koptu...")
-        // Örnek olarak yeniden bağlanmayı deneyebiliriz veya kullanıcıya bilgi verebiliriz.
         //reconnectWebSocket()
     }
     // Yeniden bağlanmayı başlatabiliriz.

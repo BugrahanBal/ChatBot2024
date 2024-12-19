@@ -1,6 +1,5 @@
 package com.balbugrahan.chatbot2024.util
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.view.LayoutInflater

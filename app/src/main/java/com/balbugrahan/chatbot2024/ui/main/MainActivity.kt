@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
 
 
     //uygulama açma kapamada cacheden getsaveden data alabiliriz.
-    //Fragmenta cevirebiliriz
     //Hata durumlarını ele alabiliriz.
 
     //sohbet bitimi vs icin handle action kullanıp websocket disconnet yapılabilir.

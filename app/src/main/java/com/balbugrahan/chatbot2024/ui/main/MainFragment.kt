@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.balbugrahan.chatbot2024.R
 import com.balbugrahan.chatbot2024.databinding.ActivityMainBinding
 import com.balbugrahan.chatbot2024.databinding.FragmentMainBinding
 import com.balbugrahan.chatbot2024.ui.StepAdapter
@@ -53,8 +51,8 @@ class MainFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.currentStep.observe(viewLifecycleOwner) { step ->
-            adapter.addStep(step) // Yeni step ekle
-            scrollToBottom()      // RecyclerView'ı en aşağıya kaydır.
+            adapter.addStep(step)
+            scrollToBottom()
         }
     }
 

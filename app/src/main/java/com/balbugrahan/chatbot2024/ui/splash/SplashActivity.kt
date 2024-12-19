@@ -31,7 +31,7 @@ class SplashActivity : AppCompatActivity() {
     private fun navigateToMainActivity() {
         val intent = Intent(this@SplashActivity, MainActivity::class.java)
         startActivity(intent)
-        finish() // SplashActivity'yi kapat
+        finish()
     }
 
     override fun onDestroy() {

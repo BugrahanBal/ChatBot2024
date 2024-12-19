@@ -18,7 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val webSocketRepository: WebSocketRepository,
-    private val stepRepository: StepRepository, // Room kullanımı için
+    private val stepRepository: StepRepository,
     private val context: Application
 ) : BaseViewModel(context) {
 
