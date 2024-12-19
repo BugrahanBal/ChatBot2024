@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:background="@drawable/custom_dialog_background"
     android:padding="20dp">
-
     <TextView
         android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
@@ -16,7 +15,6 @@
         android:gravity="center"
         android:paddingBottom="10dp"
         android:textColor="@color/black" />
-
     <TextView
         android:id="@+id/dialogMessage"
         android:layout_width="match_parent"
@@ -26,13 +24,11 @@
         android:gravity="center"
         android:paddingBottom="20dp"
         android:textColor="@color/purple_700" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center">
-
         <Button
             android:id="@+id/negativeButton"
             android:layout_width="wrap_content"
@@ -41,7 +37,6 @@
             android:text="İptal"
             android:backgroundTint="@color/purple_700"
             android:textColor="@color/white" />
-
         <Button
             android:id="@+id/positiveButton"
             android:layout_width="wrap_content"

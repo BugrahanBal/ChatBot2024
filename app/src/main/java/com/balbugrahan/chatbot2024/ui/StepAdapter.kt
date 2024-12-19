@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.balbugrahan.chatbot2024.R
 import com.balbugrahan.chatbot2024.data.model.ButtonAction
 import com.balbugrahan.chatbot2024.data.model.Content
 import com.balbugrahan.chatbot2024.data.model.Step
@@ -80,17 +81,18 @@ class StepAdapter(
             binding.questionTextView.text = text
             binding.buttonContainer.removeAllViews()
             buttons.forEach { buttonAction ->
-                val button = Button(binding.root.context).apply {
-                    this.text = buttonAction.label
-                    setOnClickListener {
-                        clickListener(buttonAction.action)
-                        addUserMessage(buttonAction.label)
-                    }
+                val buttonView = LayoutInflater.from(binding.root.context)
+                    .inflate(R.layout.custom_button, binding.buttonContainer, false) as Button
+                buttonView.text = buttonAction.label
+                buttonView.setOnClickListener {
+                    clickListener(buttonAction.action)
+                    addUserMessage(buttonAction.label)
                 }
-                binding.buttonContainer.addView(button)
+                binding.buttonContainer.addView(buttonView)
             }
         }
     }
+
 
     inner class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageUrl: String) {
