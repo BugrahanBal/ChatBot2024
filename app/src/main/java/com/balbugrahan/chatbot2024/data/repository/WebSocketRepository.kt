@@ -57,12 +57,11 @@ class WebSocketRepository @Inject constructor() {
         // Örnek olarak yeniden bağlanmayı deneyebiliriz veya kullanıcıya bilgi verebiliriz.
         //reconnectWebSocket()
     }
+    // Yeniden bağlanmayı başlatabiliriz.
     private fun reconnectWebSocket() {
         Log.d("WebSocket", "Tekrar websockete bağlanmaya çalışıyor...")
-        // Yeniden bağlanmayı başlatabiliriz.
         connectWebSocket()
     }
-
     fun disconnectWebSocket() {
         if (isConnected) {
             try {
@@ -76,6 +75,5 @@ class WebSocketRepository @Inject constructor() {
             Log.d("WebSocket", "WebSocket zaten kapalı.")
         }
     }
-
 }
 

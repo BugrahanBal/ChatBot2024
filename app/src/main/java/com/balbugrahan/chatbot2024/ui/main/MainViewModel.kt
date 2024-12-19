@@ -2,7 +2,6 @@ package com.balbugrahan.chatbot2024.ui.main
 
 import android.app.Application
 import android.widget.Toast
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -10,8 +9,8 @@ import com.balbugrahan.chatbot2024.base.BaseViewModel
 import com.balbugrahan.chatbot2024.data.model.Step
 import com.balbugrahan.chatbot2024.data.repository.StepRepository
 import com.balbugrahan.chatbot2024.data.repository.WebSocketRepository
-import com.balbugrahan.chatbot2024.util.DialogHelper
 import com.balbugrahan.chatbot2024.util.JsonHelper
+import com.balbugrahan.chatbot2024.util.NetworkUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -31,7 +30,6 @@ class MainViewModel @Inject constructor(
     private val _finishEvent = MutableLiveData<Boolean>()
     val finishEvent: LiveData<Boolean> = _finishEvent
 
-
     //Socket bağlantısı viewmodel çağrıldığında başlatılır.
     init {
         webSocketRepository.connectWebSocket()
@@ -43,7 +41,6 @@ class MainViewModel @Inject constructor(
     private fun loadInitialStep() {
         _currentStep.value = steps.firstOrNull { it.step == "step_1" }
     }
-
 
     //Socketten gelen mesajları observe eder
     private fun observeWebSocketMessages() {
@@ -67,14 +64,18 @@ class MainViewModel @Inject constructor(
             stepRepository.getSavedSteps() // Room'dan veri al
         }
     }
-    //Kullanıcı arayüzünde sockete aksiyon gönderir.
+    //Kullanıcı arayüzünde sockete aksiyon gönderir öncesinde internet kontrolü yapılır.
     fun sendAction(action: String) {
-       webSocketRepository.sendAction(action)
+        if(NetworkUtil.isInternetAvailable(context)){
+            webSocketRepository.sendAction(action)
+        }else{
+            Toast.makeText(context, "Internet Bağlantınız Koptu", Toast.LENGTH_SHORT).show()
+        }
     }
     // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.
     fun onFinishRequested() {
+        webSocketRepository.disconnectWebSocket()
         _finishEvent.postValue(true)
     }
-
 }
 
