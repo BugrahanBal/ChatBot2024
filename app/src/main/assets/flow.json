@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Sohbeti bitir",
-                    "action": "end_conversation"
+                    "action": "step_7"
                 }
             ]
         },
@@ -41,7 +41,7 @@
                 },
                 {
                     "label": "Sohbeti bitir",
-                    "action": "end_conversation"
+                    "action": "step_7"
                 }
             ]
         },
@@ -53,23 +53,23 @@
         "content": {
             "text": "Siparişiniz şu anda kargoda. Takip numaranız: TR123456789"
         },
-        "action": "end_conversation"
+        "action": "step_7"
     },
     {
         "step": "step_4",
         "type": "image",
         "content": {
-            "text":  "https://picsum.photos/200/300"
+            "text": "https://picsum.photos/200/300"
         },
-        "action": "show_guide"
+        "action": "step_7"
     },
     {
         "step": "step_5",
         "type": "text",
         "content": {
-            "text":  "Teşekkür ederiz! İade işleminiz kargoya ulaştığında işleme alınacaktır."
+            "text": "Teşekkür ederiz! İade işleminiz kargoya ulaştığında işleme alınacaktır."
         },
-        "action": "end_conversation"
+        "action": "step_7"
     },
     {
         "step": "step_6",
@@ -77,7 +77,7 @@
         "content": {
             "text": "İade işlemi için ürünü kargoya verdikten sonra işlemler başlatılacaktır. Yardıma ihtiyacınız olursa bizimle iletişime geçebilirsiniz."
         },
-        "action": "end_conversation"
+        "action": "step_7"
     },
     {
         "step": "step_7",
