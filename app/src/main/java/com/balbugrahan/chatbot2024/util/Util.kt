@@ -1,7 +1,10 @@
 package com.balbugrahan.chatbot2024.util
 
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.view.LayoutInflater
+import com.balbugrahan.chatbot2024.databinding.CustomAlertDialogBinding
 
 object DialogHelper {
     fun showAlertDialog(
@@ -13,18 +16,25 @@ object DialogHelper {
         positiveAction: (() -> Unit)? = null,
         negativeAction: (() -> Unit)? = null
     ) {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle(title)
-        builder.setMessage(message)
-        builder.setPositiveButton(positiveText) { dialog, _ ->
+        val binding = CustomAlertDialogBinding.inflate(LayoutInflater.from(context))
+        val dialog = Dialog(context)
+
+        binding.dialogTitle.text = title
+        binding.dialogMessage.text = message
+        binding.positiveButton.text = positiveText
+        binding.negativeButton.text = negativeText
+
+        binding.positiveButton.setOnClickListener {
             positiveAction?.invoke()
             dialog.dismiss()
         }
-        builder.setNegativeButton(negativeText) { dialog, _ ->
+        binding.negativeButton.setOnClickListener {
             negativeAction?.invoke()
             dialog.dismiss()
         }
-        val dialog = builder.create()
+
+        dialog.setContentView(binding.root)
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         dialog.show()
     }
 }
