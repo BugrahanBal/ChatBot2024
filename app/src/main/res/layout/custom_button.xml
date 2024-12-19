@@ -6,5 +6,5 @@
     android:layout_height="wrap_content"
     android:textColor="@color/white"
     android:fontFamily="@font/matsc"
-    android:textSize="12sp"
-    android:layout_margin="2dp" />
+    android:textSize="@dimen/sp12"
+    android:layout_margin="@dimen/dp2" />

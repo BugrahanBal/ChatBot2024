@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--DP Boyutları-->
+
+    <dimen name="dp2">2dp</dimen>
+    <dimen name="dp4">4dp</dimen>
+    <dimen name="dp8">8dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp16">16dp</dimen>
+    <dimen name="dp20">20dp</dimen>
+    <dimen name="dp100">100dp</dimen>
+    <dimen name="dp200">200dp</dimen>
+
+    <!--SP Boyutları-->
+
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="sp16">16sp</dimen>
+    <dimen name="sp20">20sp</dimen>
+
+</resources>

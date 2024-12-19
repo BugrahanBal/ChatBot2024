@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="4dp">
+    android:padding="@dimen/dp4">
     <TextView
         android:id="@+id/imageDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Örnek Resim"
-        android:textSize="16sp"
+        android:textSize="@dimen/sp16"
         android:textColor="#000000"
-        android:paddingBottom="8dp" />
+        android:paddingBottom="@dimen/dp8" />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/dp200"
         android:scaleType="centerCrop" />
 </LinearLayout>

@@ -4,25 +4,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@drawable/custom_dialog_background"
-    android:padding="20dp">
+    android:padding="@dimen/dp20">
     <TextView
         android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
-        android:textSize="20sp"
+        android:textSize="@dimen/sp20"
         android:textStyle="bold"
         android:gravity="center"
-        android:paddingBottom="10dp"
+        android:paddingBottom="@dimen/dp10"
         android:textColor="@color/black" />
     <TextView
         android:id="@+id/dialogMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Message"
-        android:textSize="16sp"
+        android:textSize="@dimen/sp16"
         android:gravity="center"
-        android:paddingBottom="20dp"
+        android:paddingBottom="@dimen/dp20"
         android:textColor="@color/purple_700" />
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:id="@+id/negativeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/dp10"
             android:text="İptal"
             android:backgroundTint="@color/purple_700"
             android:textColor="@color/white" />
