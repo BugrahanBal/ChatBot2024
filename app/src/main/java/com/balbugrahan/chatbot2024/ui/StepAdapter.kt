@@ -10,6 +10,7 @@ import com.balbugrahan.chatbot2024.data.model.Step
 import com.balbugrahan.chatbot2024.databinding.ItemButtonBinding
 import com.balbugrahan.chatbot2024.databinding.ItemImageBinding
 import com.balbugrahan.chatbot2024.databinding.ItemTextBinding
+import com.balbugrahan.chatbot2024.databinding.ItemTextUserBinding
 import com.bumptech.glide.Glide
 
 class StepAdapter(
@@ -37,12 +38,16 @@ class StepAdapter(
     override fun getItemCount() = steps.size
 
     override fun getItemViewType(position: Int): Int {
-        return when (steps[position].type) {
-            "text" -> 0
-            "button" -> 1
-            "image" -> 2
-            else -> -1
+        val type = when (steps[position].step) {
+            "user_message" -> 3
+            else -> when (steps[position].type) {
+                "text" -> 0
+                "button" -> 1
+                "image" -> 2
+                else -> -1
+            }
         }
+        return type
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -50,6 +55,7 @@ class StepAdapter(
             0 -> TextViewHolder(ItemTextBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             1 -> ButtonViewHolder(ItemButtonBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             2 -> ImageViewHolder(ItemImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+            3 -> TextViewHolderForUserMessage(ItemTextUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
@@ -60,6 +66,7 @@ class StepAdapter(
             is TextViewHolder -> holder.bind(step.content.text)
             is ButtonViewHolder -> holder.bind(step.content.buttons!!, buttonClickListener)
             is ImageViewHolder -> holder.bind(step.content.text)
+            is TextViewHolderForUserMessage -> holder.bind(step.content.text)
         }
     }
 
@@ -76,8 +83,9 @@ class StepAdapter(
                 val button = Button(binding.root.context).apply {
                     text = buttonAction.label
                     setOnClickListener {
-                        addUserMessage(buttonAction.label)
                         clickListener(buttonAction.action)
+                        addUserMessage(buttonAction.label)
+
                     }
                 }
                 binding.buttonContainer.addView(button)
@@ -88,6 +96,11 @@ class StepAdapter(
     inner class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageUrl: String) {
             Glide.with(binding.imageView.context).load(imageUrl).into(binding.imageView)
+        }
+    }
+    inner class TextViewHolderForUserMessage(private val binding: ItemTextUserBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(text: String) {
+            binding.textView.text = text
         }
     }
 }
