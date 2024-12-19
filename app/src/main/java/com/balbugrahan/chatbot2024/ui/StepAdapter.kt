@@ -38,7 +38,7 @@ class StepAdapter(
     override fun getItemCount() = steps.size
 
     override fun getItemViewType(position: Int): Int {
-        val type = when (steps[position].step) {
+        return when (steps[position].step) {
             "user_message" -> 3
             else -> when (steps[position].type) {
                 "text" -> 0
@@ -47,7 +47,6 @@ class StepAdapter(
                 else -> -1
             }
         }
-        return type
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -64,7 +63,7 @@ class StepAdapter(
         val step = steps[position]
         when (holder) {
             is TextViewHolder -> holder.bind(step.content.text)
-            is ButtonViewHolder -> holder.bind(step.content.buttons!!, buttonClickListener)
+            is ButtonViewHolder -> holder.bind(step.content.text, step.content.buttons ?: emptyList(), buttonClickListener)
             is ImageViewHolder -> holder.bind(step.content.text)
             is TextViewHolderForUserMessage -> holder.bind(step.content.text)
         }
@@ -77,15 +76,15 @@ class StepAdapter(
     }
 
     inner class ButtonViewHolder(private val binding: ItemButtonBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(buttons: List<ButtonAction>, clickListener: (String) -> Unit) {
+        fun bind(text: String, buttons: List<ButtonAction>, clickListener: (String) -> Unit) {
+            binding.questionTextView.text = text
             binding.buttonContainer.removeAllViews()
             buttons.forEach { buttonAction ->
                 val button = Button(binding.root.context).apply {
-                    text = buttonAction.label
+                    this.text = buttonAction.label
                     setOnClickListener {
                         clickListener(buttonAction.action)
                         addUserMessage(buttonAction.label)
-
                     }
                 }
                 binding.buttonContainer.addView(button)
@@ -98,9 +97,11 @@ class StepAdapter(
             Glide.with(binding.imageView.context).load(imageUrl).into(binding.imageView)
         }
     }
+
     inner class TextViewHolderForUserMessage(private val binding: ItemTextUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(text: String) {
             binding.textView.text = text
         }
     }
 }
+
