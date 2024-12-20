@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.balbugrahan.chatbot2024.R
 import com.balbugrahan.chatbot2024.base.BaseViewModel
 import com.balbugrahan.chatbot2024.data.model.Step
 import com.balbugrahan.chatbot2024.data.repository.StepRepository
@@ -69,7 +70,7 @@ class MainViewModel @Inject constructor(
         if(NetworkUtil.isInternetAvailable(context)){
             webSocketRepository.sendAction(action)
         }else{
-            Toast.makeText(context, "Internet Bağlantınız Koptu", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getText(R.string.internet_connection_failed), Toast.LENGTH_SHORT).show()
         }
     }
     // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.

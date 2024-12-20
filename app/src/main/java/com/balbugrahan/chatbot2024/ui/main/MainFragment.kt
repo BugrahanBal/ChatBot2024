@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.balbugrahan.chatbot2024.R
 import com.balbugrahan.chatbot2024.databinding.ActivityMainBinding
 import com.balbugrahan.chatbot2024.databinding.FragmentMainBinding
 import com.balbugrahan.chatbot2024.ui.StepAdapter
@@ -63,20 +64,22 @@ class MainFragment : Fragment() {
     }
 
     private fun popUpMessage() {
-        DialogHelper.showAlertDialog(
-            context = requireContext(),
-            title = "Sohbeti bitirmek mi istiyorsunuz",
-            message = "Emin misiniz?",
-            positiveText = "Evet",
-            negativeText = "Hayır",
-            positiveAction = {
-                viewModel.onFinishRequested()
-                activity?.finish()
-            },
-            negativeAction = {
-                Toast.makeText(requireContext(), "Sayfada Kal", Toast.LENGTH_SHORT).show()
-            }
-        )
+        context?.let {
+            DialogHelper.showAlertDialog(
+                context = requireContext(),
+                title = it.getString(R.string.would_like_end_conversation),
+                message = it.getString(R.string.are_you_sure),
+                positiveText = it.getString(R.string.yes_button),
+                negativeText = it.getString(R.string.no_button),
+                positiveAction = {
+                    viewModel.onFinishRequested()
+                    activity?.finish()
+                },
+                negativeAction = {
+                    Toast.makeText(requireContext(), context?.getString(R.string.not_leave), Toast.LENGTH_SHORT).show()
+                }
+            )
+        }
     }
 
     override fun onDestroyView() {

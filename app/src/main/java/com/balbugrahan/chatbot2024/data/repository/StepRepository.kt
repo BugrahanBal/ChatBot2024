@@ -6,8 +6,7 @@ import com.balbugrahan.chatbot2024.data.model.StepEntity
 import javax.inject.Inject
 
 class StepRepository @Inject constructor(
-    private val stepDao: StepDao
-) {
+    private val stepDao: StepDao) {
     suspend fun saveStep(step: Step) {
         val entity = StepEntity(
             step = step.step,

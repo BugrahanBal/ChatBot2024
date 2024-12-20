@@ -9,5 +9,4 @@ data class StepEntity(
     val step: String,
     val type: String,
     val contentText: String,
-    val imageUrl: String? = null
-)
+    val imageUrl: String? = null)

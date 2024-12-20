@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     //Read me düzenlenebilir
     //fonttan yazılar yazılabilir
 
-    //verilen json dosyasında ufak bir düzeltme yapıldı content içeriği sadece text olanların header eksikliği giderildi.
+    //verilen json dosyasında ufak bir düzeltme yapıldı 
     //verilen json dosyasına örnek bir resim urli eklendi
     //Uygulama iconu için freepik sitesinden icon seçildi.
 

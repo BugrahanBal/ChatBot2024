@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ChatBot2024</string>
+    <string name="websocket_connected">Bağlandı</string>
+    <string name="websocket_disconnected">Bağlantı Kesildi</string>
+    <string name="websocket_error">Hata</string>
+    <string name="websocket_not_action">WebSocket bağlantısı yok aksiyon gönderemezsin...</string>
+    <string name="websocket_connection_failed">WebSocket bağlantısı koptu...</string>
+    <string name="websocket_closed_by_user">WebSocket kullanıcı tarafından kapatıldı.</string>
+    <string name="websocket_already_closed">WebSocket zaten kapalı.</string>
+    <string name="websocket_error_when_closed">WebSocket kapatılırken hata oluştu </string>
+    <string name="websocket_reconnecting">Tekrar websockete bağlanmaya çalışıyor...</string>
+    <string name="internet_connection_failed">Internet bağlantınız koptu</string>
+    <string name="not_leave">Sayfada Kal</string>
+    <string name="would_like_end_conversation">Sohbeti bitirmek mi istiyorsunuz?</string>
+    <string name="are_you_sure">Emin misiniz?</string>
+    <string name="yes_button">Evet</string>
+    <string name="no_button">Hayır</string>
+
+
 </resources>

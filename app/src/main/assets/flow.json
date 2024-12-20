@@ -18,7 +18,7 @@
                     "action": "step_4"
                 },
                 {
-                    "label": "Sohbeti bitir",
+                    "label": "Diğer",
                     "action": "step_7"
                 }
             ]
@@ -40,7 +40,7 @@
                     "action": "step_6"
                 },
                 {
-                    "label": "Sohbeti bitir",
+                    "label": "Diğer",
                     "action": "step_7"
                 }
             ]
