@@ -1,5 +1,6 @@
 package com.balbugrahan.chatbot2024.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Button
@@ -12,9 +13,11 @@ import com.balbugrahan.chatbot2024.databinding.ItemButtonBinding
 import com.balbugrahan.chatbot2024.databinding.ItemImageBinding
 import com.balbugrahan.chatbot2024.databinding.ItemTextBinding
 import com.balbugrahan.chatbot2024.databinding.ItemTextUserBinding
+import com.balbugrahan.chatbot2024.util.NetworkUtil
 import com.bumptech.glide.Glide
 
 class StepAdapter(
+    private val context: Context,
     private val buttonClickListener: (String) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -82,7 +85,8 @@ class StepAdapter(
                 buttonView.text = buttonAction.label
                 buttonView.setOnClickListener {
                     clickListener(buttonAction.action)
-                    addUserMessage(buttonAction.label)
+                    if (NetworkUtil.isInternetAvailable(context)) {
+                        addUserMessage(buttonAction.label)}
                 }
                 binding.buttonContainer.addView(buttonView)
             }

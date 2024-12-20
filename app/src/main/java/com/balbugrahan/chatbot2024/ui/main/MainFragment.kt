@@ -20,16 +20,7 @@ class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
-    private val adapter = StepAdapter { action ->
-        when (action) {
-            "end_conversation" -> {
-                popUpMessage()
-            }
-            else -> {
-                viewModel.sendAction(action)
-            }
-        }
-    }
+    private lateinit var adapter: StepAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +33,16 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        adapter = StepAdapter(requireContext()) { action ->
+            when (action) {
+                "end_conversation" -> {
+                    popUpMessage()
+                }
+                else -> {
+                    viewModel.sendAction(action)
+                }
+            }
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
 
