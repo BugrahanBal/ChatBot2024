@@ -13,8 +13,8 @@ object DialogHelper {
         positiveText: String,
         negativeText: String,
         positiveAction: (() -> Unit)? = null,
-        negativeAction: (() -> Unit)? = null
-    ) {
+        negativeAction: (() -> Unit)? = null)
+    {
         val binding = CustomAlertDialogBinding.inflate(LayoutInflater.from(context))
         val dialog = Dialog(context)
 
@@ -25,12 +25,11 @@ object DialogHelper {
 
         binding.positiveButton.setOnClickListener {
             positiveAction?.invoke()
-            dialog.dismiss()
-        }
+            dialog.dismiss() }
+
         binding.negativeButton.setOnClickListener {
             negativeAction?.invoke()
-            dialog.dismiss()
-        }
+            dialog.dismiss() }
 
         dialog.setContentView(binding.root)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)

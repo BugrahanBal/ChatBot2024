@@ -19,7 +19,6 @@ class WebSocketRepository @Inject constructor(
     private lateinit var webSocketClient: WebSocketClient
     private val _messageLiveData = MutableLiveData<String>()
     val messageLiveData: LiveData<String> = _messageLiveData
-
     private var isConnected = false // Bağlantı durumunu takip etmek için
 
     fun connectWebSocket() {
