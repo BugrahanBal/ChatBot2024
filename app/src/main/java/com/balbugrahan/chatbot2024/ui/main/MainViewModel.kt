@@ -13,7 +13,6 @@ import com.balbugrahan.chatbot2024.data.repository.WebSocketRepository
 import com.balbugrahan.chatbot2024.util.JsonHelper
 import com.balbugrahan.chatbot2024.util.NetworkUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -60,7 +59,7 @@ class MainViewModel @Inject constructor(
         }
     }
     //Room'dan veri alır.
-    private fun getSavedStepsFromRoom() {
+    fun getSavedStepsFromRoom() {
         viewModelScope.launch {
             stepRepository.getSavedSteps() // Room'dan veri al
         }
@@ -73,6 +72,7 @@ class MainViewModel @Inject constructor(
             Toast.makeText(context, context.getText(R.string.internet_connection_failed), Toast.LENGTH_SHORT).show()
         }
     }
+    //Tekrar bağlantı kurar.Async sekilde yönetilebilir.
     private fun reConnectWebSocket() {
         webSocketRepository.reconnectWebSocket()
     }

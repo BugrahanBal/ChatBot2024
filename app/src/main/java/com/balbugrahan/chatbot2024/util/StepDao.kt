@@ -12,6 +12,6 @@ interface StepDao {
     @Insert
     suspend fun insertStep(step: StepEntity)
 
-    @Query("SELECT * FROM steps ORDER BY id ASC")
+    @Query("SELECT * FROM steps")
     suspend fun getAllSteps(): List<StepEntity>
 }
