@@ -13,7 +13,6 @@ import kotlinx.coroutines.launch
 
 class SplashActivity : AppCompatActivity() {
 
-    // Coroutine scope
     private val splashScreenScope = CoroutineScope(Dispatchers.Main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +34,7 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        // Scope'u iptal et (Memory Leak'i önlemek için)
+        // Memory leaki önlemek için scope iptal edilir.
         splashScreenScope.cancel()
     }
 }

@@ -61,7 +61,7 @@ class MainViewModel @Inject constructor(
     //Room'dan veri alır.
     fun getSavedStepsFromRoom() {
         viewModelScope.launch {
-            stepRepository.getSavedSteps() // Room'dan veri al
+            stepRepository.getSavedSteps() // Room'dan veri alır.
         }
     }
     //Kullanıcı arayüzünde sockete aksiyon gönderir öncesinde internet kontrolü yapılır.
