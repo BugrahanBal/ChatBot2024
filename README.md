@@ -1,4 +1,4 @@
-Modern Android geliştirme prensiplerine dayalı, hızlı ve performanslı bir uygulama! Kullanıcı dostu arayüz ve güçlü altyapısıyla öne çıkıyor.
+Modern Android geliştirme prensiplerine dayalı, hızlı ve performanslı bir uygulama! Kullanıcı dostu arayüz ve güçlü altyapısıyla öne çıkan chatbot uygulamama hoş geldiniz :).
 
 🛠 Kullanılan Teknolojiler
 MVVM Clean Architecture: Modüler, okunabilir ve test edilebilir yapı.
