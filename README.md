@@ -9,10 +9,10 @@ Room: Güçlü yerel veri yönetimi.
 WebSocket: Gerçek zamanlı iletişim.
 
 🌟 Özellikler
-Modüler ve modern mimari.
-Gerçek zamanlı veri akışı.
-Performans odaklı asenkron yapı.
-Kolay geliştirilebilir ve sürdürülebilir kod.
+Modüler ve modern mimari,
+gerçek zamanlı veri akışı,
+performans odaklı asenkron yapı ve
+kolay geliştirilebilir ve sürdürülebilir kod.
 
 ⭐ Projemi beğendiyseniz yıldız bırakmayı unutmayın! 💡
 
