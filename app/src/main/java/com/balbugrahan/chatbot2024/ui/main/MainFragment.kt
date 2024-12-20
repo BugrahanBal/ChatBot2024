@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.balbugrahan.chatbot2024.R
-import com.balbugrahan.chatbot2024.databinding.ActivityMainBinding
 import com.balbugrahan.chatbot2024.databinding.FragmentMainBinding
 import com.balbugrahan.chatbot2024.ui.StepAdapter
 import com.balbugrahan.chatbot2024.util.DialogHelper
@@ -19,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
-    private var _bindingFragment: ActivityMainBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MainViewModel by viewModels()
     private val adapter = StepAdapter { action ->

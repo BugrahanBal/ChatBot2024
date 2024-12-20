@@ -11,7 +11,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 class SplashActivity : AppCompatActivity() {
 
     // Coroutine scope

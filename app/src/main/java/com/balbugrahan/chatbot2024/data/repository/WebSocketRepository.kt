@@ -16,7 +16,6 @@ import javax.inject.Singleton
 class WebSocketRepository @Inject constructor(
     @ApplicationContext private val context: Context
 ) {
-
     private lateinit var webSocketClient: WebSocketClient
     private val _messageLiveData = MutableLiveData<String>()
     val messageLiveData: LiveData<String> = _messageLiveData

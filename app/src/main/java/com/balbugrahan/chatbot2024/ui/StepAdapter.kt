@@ -49,7 +49,6 @@ class StepAdapter(
             }
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             0 -> TextViewHolder(ItemTextBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -59,7 +58,6 @@ class StepAdapter(
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
-
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val step = steps[position]
         when (holder) {
@@ -69,13 +67,11 @@ class StepAdapter(
             is TextViewHolderForUserMessage -> holder.bind(step.content.text)
         }
     }
-
     inner class TextViewHolder(private val binding: ItemTextBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(text: String) {
             binding.textView.text = text
         }
     }
-
     inner class ButtonViewHolder(private val binding: ItemButtonBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(text: String, buttons: List<ButtonAction>, clickListener: (String) -> Unit) {
             binding.questionTextView.text = text
@@ -92,14 +88,11 @@ class StepAdapter(
             }
         }
     }
-
-
     inner class ImageViewHolder(private val binding: ItemImageBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(imageUrl: String) {
             Glide.with(binding.imageView.context).load(imageUrl).into(binding.imageView)
         }
     }
-
     inner class TextViewHolderForUserMessage(private val binding: ItemTextUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(text: String) {
             binding.textView.text = text

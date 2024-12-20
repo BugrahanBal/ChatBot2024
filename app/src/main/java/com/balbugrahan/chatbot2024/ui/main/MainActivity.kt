@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.balbugrahan.chatbot2024.R
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,16 +18,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
-
-
-    //uygulama açma kapamada cacheden getsaveden data alabiliriz.
-    //Hata durumlarını ele alabiliriz.
-
-    //sohbet bitimi vs icin handle action kullanıp websocket disconnet yapılabilir.
-    //Read me düzenlenebilir
-    //fonttan yazılar yazılabilir
-
-    //verilen json dosyasında ufak bir düzeltme yapıldı 
-    //verilen json dosyasına örnek bir resim urli eklendi
-    //Uygulama iconu için freepik sitesinden icon seçildi.
 
