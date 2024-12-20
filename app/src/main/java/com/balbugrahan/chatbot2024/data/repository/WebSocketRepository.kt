@@ -68,7 +68,7 @@ class WebSocketRepository @Inject constructor(
     }
 
     // Yeniden bağlanmayı başlatabiliriz.
-    private fun reconnectWebSocket() {
+    fun reconnectWebSocket() {
         Log.d("WebSocket", context.getString(R.string.websocket_reconnecting))
         connectWebSocket()
     }

@@ -13,6 +13,7 @@ import com.balbugrahan.chatbot2024.data.repository.WebSocketRepository
 import com.balbugrahan.chatbot2024.util.JsonHelper
 import com.balbugrahan.chatbot2024.util.NetworkUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -43,7 +44,6 @@ class MainViewModel @Inject constructor(
         _currentStep.value = steps.firstOrNull { it.step == "step_1" }
     }
 
-    //Socketten gelen mesajları observe eder
     private fun observeWebSocketMessages() {
         webSocketRepository.messageLiveData.observeForever { response ->
             val nextStep = steps.find { it.step == response }
@@ -67,11 +67,14 @@ class MainViewModel @Inject constructor(
     }
     //Kullanıcı arayüzünde sockete aksiyon gönderir öncesinde internet kontrolü yapılır.
     fun sendAction(action: String) {
-        if(NetworkUtil.isInternetAvailable(context)){
+        if (NetworkUtil.isInternetAvailable(context)) {
             webSocketRepository.sendAction(action)
-        }else{
+        } else {
             Toast.makeText(context, context.getText(R.string.internet_connection_failed), Toast.LENGTH_SHORT).show()
         }
+    }
+    private fun reConnectWebSocket() {
+        webSocketRepository.reconnectWebSocket()
     }
     // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.
     fun onFinishRequested() {
@@ -79,4 +82,5 @@ class MainViewModel @Inject constructor(
         _finishEvent.postValue(true)
     }
 }
+
 
