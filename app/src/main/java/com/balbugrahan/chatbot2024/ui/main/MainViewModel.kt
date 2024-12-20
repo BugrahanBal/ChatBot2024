@@ -24,10 +24,8 @@ class MainViewModel @Inject constructor(
 ) : BaseViewModel(context) {
 
     private val steps: List<Step> = JsonHelper.loadSteps(context)
-
     private val _currentStep = MutableLiveData<Step>()
     val currentStep: LiveData<Step> get() = _currentStep
-
     private val _finishEvent = MutableLiveData<Boolean>()
     val finishEvent: LiveData<Boolean> = _finishEvent
 
@@ -67,14 +65,18 @@ class MainViewModel @Inject constructor(
     //Kullanıcı arayüzünde sockete aksiyon gönderir öncesinde internet kontrolü yapılır.
     fun sendAction(action: String) {
         if (NetworkUtil.isInternetAvailable(context)) {
-            webSocketRepository.sendAction(action)
+            if (!webSocketRepository.isConnected()) {
+                // Bağlantı yoksa yeniden bağlanmayı deniyorum. Çok kısa sürede tekrar bağlanıyor.
+                webSocketRepository.reconnectWebSocket() }
+            if (webSocketRepository.isConnected()) {
+                webSocketRepository.sendAction(action) }
+            else {
+                Toast.makeText(context, context.getText(R.string.websocket_connection_failed),
+                    Toast.LENGTH_SHORT).show() }
         } else {
-            Toast.makeText(context, context.getText(R.string.internet_connection_failed), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getText(R.string.internet_connection_failed),
+                Toast.LENGTH_SHORT).show()
         }
-    }
-    //Tekrar bağlantı kurar.Async sekilde yönetilebilir.
-    private fun reConnectWebSocket() {
-        webSocketRepository.reconnectWebSocket()
     }
     // ViewModel'den finish tetiklemek için burayı çağrılabiliriz.
     fun onFinishRequested() {

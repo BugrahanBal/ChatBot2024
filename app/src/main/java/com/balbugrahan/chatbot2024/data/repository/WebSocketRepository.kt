@@ -85,4 +85,8 @@ class WebSocketRepository @Inject constructor(
             Log.d("WebSocket", context.getString(R.string.websocket_already_closed))
         }
     }
+    fun isConnected(): Boolean {
+        return isConnected
+    }
+
 }
