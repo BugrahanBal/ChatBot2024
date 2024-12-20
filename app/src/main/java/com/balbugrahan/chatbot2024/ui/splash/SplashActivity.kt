@@ -25,13 +25,11 @@ class SplashActivity : AppCompatActivity() {
             navigateToMainActivity()
         }
     }
-
     private fun navigateToMainActivity() {
         val intent = Intent(this@SplashActivity, MainActivity::class.java)
         startActivity(intent)
         finish()
     }
-
     override fun onDestroy() {
         super.onDestroy()
         // Memory leaki önlemek için scope iptal edilir.

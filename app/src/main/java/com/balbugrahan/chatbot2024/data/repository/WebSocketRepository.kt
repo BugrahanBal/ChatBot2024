@@ -28,19 +28,16 @@ class WebSocketRepository @Inject constructor(
                 Log.d("WebSocket", context.getString(R.string.websocket_connected))
                 isConnected = true
             }
-
             override fun onMessage(message: String?) {
                 message?.let {
                     _messageLiveData.postValue(it)
                 }
             }
-
             override fun onClose(code: Int, reason: String?, remote: Boolean) {
                 Log.d("WebSocket", context.getString(R.string.websocket_disconnected) + ": $reason")
                 isConnected = false
                 handleDisconnected()
             }
-
             override fun onError(ex: Exception?) {
                 Log.e("WebSocket", context.getString(R.string.websocket_error) + ": ${ex?.message}")
                 isConnected = false
@@ -62,7 +59,6 @@ class WebSocketRepository @Inject constructor(
     private fun handleDisconnected() {
         // Bağlantı kesilince alınacak aksiyonlar
         Log.d("WebSocket", context.getString(R.string.websocket_connection_failed))
-        //reconnectWebSocket()
     }
 
     // Yeniden bağlanmayı başlatabiliriz.
@@ -84,8 +80,8 @@ class WebSocketRepository @Inject constructor(
             Log.d("WebSocket", context.getString(R.string.websocket_already_closed))
         }
     }
+
     fun isConnected(): Boolean {
         return isConnected
     }
-
 }
